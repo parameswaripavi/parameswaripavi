@@ -1,0 +1,151 @@
+//Evaluation Details
+get industry(){
+    return [
+        { label: 'Yes', value: 'Yes' },
+        { label: 'No', value: 'No' },
+    ];
+}
+   //update evaluation records
+
+
+company_eva_name='';
+company_eva_code='';
+cust_1='';
+cust_2='';
+cust_3='';
+cust_4='';
+turn_over_1='';
+turn_over_2='';
+turn_over_3='';
+turn_over_4='';
+management='';
+operators='';
+spare_capacity='';
+super_visor='';
+casual_labls='';
+material_utilized='';
+toleraance='';
+automotive_industry='';
+current_plan='';
+inspection='';
+finalinspection='';
+systemeffectiveness='';
+instrumentcalibrated='';
+internalaudit='';
+trainingemployee='';
+ppapisar='';
+rejectiondata='';
+rejectionanalysis='';
+certificationtarget='';
+
+
+
+
+update_evaluation_details(){
+
+    // this.company_eva_name=this.template.querySelector('.eva_company_name_c').value;
+    // console.log(this.company_eva_name)
+  
+
+
+    // quality details
+    this.inspection=this.template.querySelector('.inspection_c').value;
+    this.finalinspection=this.template.querySelector('.final_inspection_c').value;
+    this.systemeffectiveness=this.template.querySelector('.system_c').value;
+    this.instrumentcalibrated=this.template.querySelector('.calibration_c').value;
+    this.internalaudit=this.template.querySelector('.frequency_c').value;
+    this.trainingemployee=this.template.querySelector('.training_c').value;
+    this.ppapisar=this.template.querySelector('.ppap_c').value;
+    this.rejectiondata=this.template.querySelector('.house_c').value;
+    this.rejectionanalysis=this.template.querySelector('.rejection_c').value;
+    this.certificationtarget=this.template.querySelector('.target_c').value;
+    this.management=this.template.querySelector('.management_c').value;
+    this.operators=this.template.querySelector('.operator_c').value;
+    this.spare_capacity=this.template.querySelector('.spare_c').value;
+    this.super_visor=this.template.querySelector('.supervisor_c').value;
+    this.casual_labels=this.template.querySelector('.casual_c').value;
+    this.material_utilized=this.template.querySelector('.material_c').value;
+    this.tolerance=this.template.querySelector('.tolerance_c').value;
+    this.current_plan=this.template.querySelector('.current_c').value;
+    
+
+
+
+    addEvaluation({quality_inspection: this.inspection,final_inspection: this.finalinspection, system_effectiveness: this.systemeffectiveness,instrument_calibrated: this.instrumentcalibrated,internel_audit: this.internalaudit,training_employee: this.trainingemployee,ppap_isar: this.ppapisar,rejection_data: this.rejectiondata,rejection_analysis: this.rejectionanalysis,certification_target:this.certificationtarget,management_g: this.management,operators_g:this.operators,spare_capacity:this.spare_capacity,supervisor_g:this.super_visor,casual_labels:this.casual_labels,materials_utilized:this.material_utilized,typical_tolerance:this.tolerance,currents_plan:this.current_plan}).then(result => {
+        console.log(result);
+        // this.Response_results='';
+        // console.log('response result is '+this.Response_results);
+        this.Response_results = result;
+        console.log('response result is '+this.Response_results);
+        //this.clears()
+        
+    }).catch(error=>{
+        console.log(error);
+    });   
+ 
+}
+
+
+// evaluation
+
+@track evaluation_Dynamictableaction_var=[];
+evaluation_date;
+evaluation_dc_number;
+evaluation_received_quantity;
+evaluation_accepted_quantity;
+evaluation_rejected_quantity;
+evaluation_remarks;
+evaluation_Dynamictableaction()
+{
+    this.evaluation_date = this.template.querySelector('.date_c').value;
+    this.evaluation_dc_number = this.template.querySelector('.dc_number_c').value;
+    this.evaluation_received_quantity= this.template.querySelector('.received_c').value;
+    this.evaluation_accepted_quantity = this.template.querySelector('.accepted_c').value;
+    this.evaluation_rejected_quantity = this.template.querySelector('.rejected_c').value;
+    this.evaluation_remarks = this.template.querySelector('.remarks_c').value;
+
+
+    this.evaluation_Dynamictableaction_var.push({date_type:this.evaluation_date,dc_type:this.evaluation_dc_number,received_type:this.evaluation_received_quantity,accepted_type:this.evaluation_accepted_quantity,rejected_type:this.evaluation_rejected_quantity})
+       this.len=this.evaluation_Dynamictableaction_var.length;
+       console.log('the object lengthg is  '+this.len)
+       console.log(this.evaluation_Dynamictableaction_var[0].evaluation_type);
+       
+     
+
+   }
+    
+   lengths;
+
+
+
+
+   evaluation_save_handle_testing()
+
+ {
+    console.log('clicked');
+    console.log(this.evaluation_Dynamictableaction_var[0].evaluation_type);
+
+    for(let i=0;i<this.evaluation_Dynamictableaction_var.length;i++)
+    {
+        vendor_evaluation_controller_testing({tri_date:this. evaluation_Dynamictableaction_var=[i].evaluation_date,tri_dc:this. evaluation_Dynamictableaction_var=[i].evaluation_dc_number,tri_received:this. evaluation_Dynamictableaction_var=[i].evaluation_received_quantity,tri_accepted:evaluation_Dynamictableaction_var[i].evaluation_accepted_quantity,tri_rejected:evaluation_Dynamictableaction_var[i].evaluation_rejected_quantity}).then(result => {
+            console.log(result);
+       
+            
+        }).catch(error=>{
+            console.log(error);
+        });  
+
+    }
+
+
+
+
+
+
+
+}
+
+
+
+}
+
